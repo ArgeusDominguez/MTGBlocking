@@ -36,6 +36,3 @@ stopQueriesSaving :-
 :- initialization set_prolog_flag(color_term, false).
 
 /*If you are seeing multiple results delete eveything below this line but leave a single empty line directly below this one*/
-
-creature(human,3,3).
-creature(troll,3,3).
