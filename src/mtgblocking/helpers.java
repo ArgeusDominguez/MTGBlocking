@@ -19,6 +19,8 @@ public class helpers {
     
     private static String tradePred = "trade";
     private static String survivePred = "surviveBlock";
+    private static String sed = "sed -i '39,$d' mtg.pl";
+    private static String swipl;
     
     private static String writeInit(String pred, String cr1, String cr2){
         return ":- initialization " + pred + "(" + cr1 + "," + cr2 + ").";    
@@ -30,6 +32,7 @@ public class helpers {
     
     static void writeToFile(File path, String blkName, String blkPow, String blkTou, String attName, String attPow, String attTou) {
         try {
+            swipl = "swipl -s mtg.pl -g \"saveQueries('1Test.txt'), survivors(" + blkName + "," + attName + ")," + "stopQueriesSaving, halt\"";
             FileWriter fw = new FileWriter(path, true);
             BufferedWriter bw = new BufferedWriter(fw);
             bw.newLine();
@@ -48,8 +51,6 @@ public class helpers {
     
     static void runSwipl(File dir){
         try {
-            String sed = "sed -i '30,$d' mtg.pl";
-            String swipl = "swipl -s mtg.pl -g \"saveQueries('1Test.txt'), [mtg], stopQueriesSaving, halt\"";
             ProcessBuilder pb = new ProcessBuilder("/usr/bin/bash", "-c", swipl);
             ProcessBuilder pb2 = new ProcessBuilder("/usr/bin/bash", "-c", sed);
             pb.directory(dir);
