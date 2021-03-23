@@ -1,0 +1,9 @@
+# ignore directories
+build/
+dist/
+nbproject/
+test/
+
+# ignore files
+build.xml
+manifest.mf
